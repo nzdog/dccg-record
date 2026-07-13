@@ -1,0 +1,22 @@
+name: The additive gate
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Additive check (invariants 1–3)
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            node scripts/gate.mjs "${{ github.event.pull_request.base.sha }}" "${{ github.event.pull_request.head.sha }}"
+          else
+            node scripts/gate.mjs "${{ github.event.before }}" "${{ github.sha }}"
+          fi
+      - name: Schema validation (invariants 4, 7, 8, 9 — structural half)
+        run: node scripts/validate.mjs .
