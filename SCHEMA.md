@@ -122,3 +122,12 @@ authority: ...
   instrument-stamped. (This is the Record; ballot anonymity constraints
   belong to the future ballot store, not here — no ballot ever writes to
   this repository except as an aggregated, unattributed distribution.)
+
+## Optional body sections
+
+A version's body is the motion text, optionally followed by two generated
+sections: `## Further notes` (free text from the creator) and
+`## Attachments` (a list of links). **Links only, never uploaded files** —
+a file in an append-only public record could never be redacted, and the
+redaction policy is the community's still-open ruling. File attachments are
+deliberately unbuilt until that ruling exists.
