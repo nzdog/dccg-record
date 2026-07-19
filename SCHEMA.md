@@ -73,6 +73,15 @@ provenance: minutes | instrument
 review_date: 2026-12-01          # instrument motions: set by the creator.
                                  # minutes motions: absent if not minuted.
 owner_if_carried: ""             # optional
+scoping_statement: >-            # optional — the creator's plain-language
+  Who this decision lands on,    # line saying who the decision lands on
+  and why.                       # and why (renders the weighing measures)
+axes:                            # optional — invariant-9 snapshot of the
+  status: draft                  # weighing measures that applied at
+  source: docs/governance/constitution-draft.md
+  measures:                      # publication, read from the constitution
+    - name: Place                # source at publish time; the build holds
+      definition: ...            # no copy (invariant 8)
 purpose: ...                     # optional — motion-level scaffold (instrument
 why: ...                         # motions compose these; minutes motions may
 outcomes:                        # lack them)
@@ -98,10 +107,12 @@ Body: the motion text (markdown).
 plank makes the motion irreversible (invariant 7 by construction — a stored
 copy could disagree with the derivation).
 
-**No threshold or axis fields exist.** The constitution holds no threshold
-mapping or axis list yet; there is nothing to render and nothing to snapshot
-(invariants 8, 9). When the community rules, snapshot fields will be **added**
-to new versions — never backfilled into old ones.
+**Axes snapshot, thresholds absent.** The weighing measures (axes) exist in
+the draft constitution source and are snapshotted into instrument versions
+(invariant 9), read at publish time — the build holds no copy (invariant 8).
+**No threshold fields exist**: the constitution holds no threshold mapping
+yet, so nothing may be snapshotted or invented. When the community rules,
+threshold snapshots will be **added** to new versions — never backfilled.
 
 ## Motion events — `motions/M/events/NNNN-<type>.md`
 
