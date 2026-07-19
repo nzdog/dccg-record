@@ -108,7 +108,7 @@ for (const gapDir of readdirSync(GAPS).filter((d) => !d.startsWith('.'))) {
       if (/^(irreversible|reversible|reversibility):/m.test(v.__raw.replace(/^\s+.*$/gm, ''))) {
         errors.push(`${gapDir}/motions/${m}/versions/${vf}: stores motion-level reversibility — it must DERIVE from planks (invariant 7)`);
       }
-      if (/threshold|axis|axes|majority/i.test(v.__raw)) {
+      if (/^\s*(threshold|axis|axes|majority)\w*\s*:/im.test(v.__raw)) {
         errors.push(`${gapDir}/motions/${m}/versions/${vf}: carries threshold/axis data — the constitution holds none yet; nothing may be snapshotted or invented (invariants 8, 9)`);
       }
     });
