@@ -6,11 +6,11 @@ its **gaps** (things the community has seen and not yet closed) and its
 
 ## Status: provisional
 
-This record was created for the demonstration to the DCCG meeting of
-**19 July 2026**. The Motion Template instrument is not installed by authority
-— it goes through the community's own process (build spec §13). Whether this
-record is adopted, and whether its demonstration-era contents carry forward
-into the adopted record, is **the community's decision**.
+This record was shown to the DCCG meeting of **19 July 2026** and now stands
+before the community for feedback. The Motion Template instrument is not
+installed by authority — it goes through the community's own process (build
+spec §13). Whether this record is adopted, and whether its early contents
+carry forward into the adopted record, is **the community's decision**.
 
 ## The rules this repository lives by
 

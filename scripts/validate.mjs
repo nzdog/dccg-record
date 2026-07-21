@@ -113,6 +113,25 @@ for (const gapDir of readdirSync(GAPS).filter((d) => !d.startsWith('.'))) {
       }
     });
     checkEvents(join(motionsDir, m, 'events'), MOTION_EVENTS, `${gapDir}/motions/${m}/events`);
+
+    const sDir = join(motionsDir, m, 'suggestions');
+    if (existsSync(sDir)) {
+      const label = `${gapDir}/motions/${m}/suggestions`;
+      const sFiles = readdirSync(sDir).filter((f) => f.endsWith('.md')).sort();
+      sFiles.forEach((sf, si) => {
+        if (!/^\d{4}\.md$/.test(sf)) return errors.push(`${label}/${sf}: filename must be NNNN.md`);
+        const s = fm(join(sDir, sf));
+        if (!s) return errors.push(`${label}/${sf}: no frontmatter`);
+        if (parseInt(s.seq, 10) !== si + 1) errors.push(`${label}/${sf}: seq ${s.seq}, expected ${si + 1} (gapless, ordered)`);
+        if (!s.date) errors.push(`${label}/${sf}: missing date`);
+        // Suggestions are unattributed — identity-on-the-record is the
+        // community's open ruling (the seconded event's seconder field is
+        // the one ruled exception, and it lives in events/, not here).
+        if (/^\s*(name|author|member|email)\s*:/im.test(s.__raw)) {
+          errors.push(`${label}/${sf}: carries an identity field — suggestions are unattributed until the community rules otherwise`);
+        }
+      });
+    }
   });
 }
 

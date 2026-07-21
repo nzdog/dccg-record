@@ -19,6 +19,8 @@ gaps/
           v1.md                 # immutable motion text, version 1
         events/
           0001-recorded.md      # motion lifecycle events
+        suggestions/
+          0001.md               # community suggestions on the motion
 ```
 
 ## Keys
@@ -131,10 +133,34 @@ authority: ...
 
 - `recorded` — entered into the Record from minutes (pre-instrument history).
 - `published` — composed and published through the instrument.
+- `seconded` — given via the instrument (chair's ruling, 21 July 2026): one
+  second suffices, its meaning is that the motion **will be discussed at the
+  next meeting**, and — as vouching — it carries an additional
+  `seconder: "Name"` field. This is currently the only place the Record
+  holds a name; general identity-on-the-record remains the community's
+  open ruling.
 - The terminal set and the review/deferral transitions follow build spec §5.
   Transitions whose operating rules the community has not yet made
-  (who records a second, deferral franchise, the review forcing arm) **do not
+  (deferral franchise, the review forcing arm, the vote itself) **do not
   occur in this record** until ruled — the instrument shows a wall instead.
+
+## Motion suggestions — `motions/M/suggestions/NNNN.md`
+
+```yaml
+seq: 1
+date: 2026-07-21
+authority: >-
+  received via the instrument — suggestions are recorded and cannot be
+  suppressed
+```
+
+The body is the suggestion text, verbatim. Suggestions are **unattributed**
+(identity-on-the-record is the community's open ruling) and append-only like
+everything else: once recorded, a suggestion cannot be deleted or suppressed,
+and it travels with the motion to the meeting that discusses it. The
+creator's accept/decline — accepted becoming a new version, declined
+travelling as an unaccepted amendment — is not yet operable: it requires
+knowing who a motion's creator is, which the community has not ruled.
 
 ## Ordering and integrity
 
