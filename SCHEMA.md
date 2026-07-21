@@ -133,12 +133,14 @@ authority: ...
 
 - `recorded` — entered into the Record from minutes (pre-instrument history).
 - `published` — composed and published through the instrument.
-- `seconded` — given via the instrument (chair's ruling, 21 July 2026): one
+- `seconded` — given via the instrument (chair's rulings, 21 July 2026): one
   second suffices, its meaning is that the motion **will be discussed at the
   next meeting**, and — as vouching — it carries an additional
-  `seconder: "Name"` field. This is currently the only place the Record
-  holds a name; general identity-on-the-record remains the community's
-  open ruling.
+  `seconder: "Name"` field. The seconder must be on the community list and
+  the second is confirmed from their email on file before it is written.
+  Names on the Record appear here and on suggestions; general
+  identity-on-the-record (motion creators) remains the community's open
+  ruling.
 - `second_annulled` — append-only undo of an invalid second (chair's ruling,
   21 July 2026: **the mover cannot second their own motion**). Nothing is
   deleted: the annulment carries `annuls: <seq>` naming the voided event,
@@ -156,18 +158,28 @@ authority: ...
 ```yaml
 seq: 1
 date: 2026-07-21
+name: "Member Name"       # from the community list — its spelling is canonical
+confirm: "a1b2c3d4e5f6a7b8" # confirmation-token fingerprint (idempotency)
 authority: >-
-  received via the instrument — suggestions are recorded and cannot be
-  suppressed
+  suggested by Member Name, confirmed from their email on file —
+  suggestions are recorded and cannot be suppressed
 ```
 
-The body is the suggestion text, verbatim. Suggestions are **unattributed**
-(identity-on-the-record is the community's open ruling) and append-only like
-everything else: once recorded, a suggestion cannot be deleted or suppressed,
-and it travels with the motion to the meeting that discusses it. The
-creator's accept/decline — accepted becoming a new version, declined
-travelling as an unaccepted amendment — is not yet operable: it requires
-knowing who a motion's creator is, which the community has not ruled.
+The body is the suggestion text, verbatim. By the chair's rulings of
+21 July 2026, suggestions are **attributed and verified**: only a name on
+the **community list** (kept privately by the chair, with an email on file)
+may suggest, and nothing posts until a confirmation link sent to that email
+is clicked. The recorded name is the list's spelling. The Record holds
+**names only — never email addresses or contact details** (the validator
+enforces this). Early suggestions predating the ruling have no `name` field;
+absences are shown, not backfilled.
+
+Suggestions are append-only like everything else: once recorded, a
+suggestion cannot be deleted or suppressed, and it travels with the motion
+to the meeting that discusses it. The creator's accept/decline — accepted
+becoming a new version, declined travelling as an unaccepted amendment — is
+not yet operable: it requires knowing who a motion's creator is, which the
+community has not ruled.
 
 ## Ordering and integrity
 

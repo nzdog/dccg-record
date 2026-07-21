@@ -124,11 +124,12 @@ for (const gapDir of readdirSync(GAPS).filter((d) => !d.startsWith('.'))) {
         if (!s) return errors.push(`${label}/${sf}: no frontmatter`);
         if (parseInt(s.seq, 10) !== si + 1) errors.push(`${label}/${sf}: seq ${s.seq}, expected ${si + 1} (gapless, ordered)`);
         if (!s.date) errors.push(`${label}/${sf}: missing date`);
-        // Suggestions are unattributed — identity-on-the-record is the
-        // community's open ruling (the seconded event's seconder field is
-        // the one ruled exception, and it lives in events/, not here).
-        if (/^\s*(name|author|member|email)\s*:/im.test(s.__raw)) {
-          errors.push(`${label}/${sf}: carries an identity field — suggestions are unattributed until the community rules otherwise`);
+        // Suggestions carry their maker's NAME (chair's ruling, 21 July
+        // 2026, email-confirmed) — but never an email address or any other
+        // contact detail. The community list stays private; the Record
+        // holds names only.
+        if (/^\s*(email|e-mail|phone|address)\s*:/im.test(s.__raw) || /[\w.+-]+@[\w-]+\.[\w.]+/.test(s.__raw)) {
+          errors.push(`${label}/${sf}: carries contact details — the Record holds names only; emails live on the private community list`);
         }
       });
     }
