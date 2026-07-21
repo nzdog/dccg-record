@@ -20,9 +20,9 @@ const ROOT = process.argv[2] || '.';
 const GAPS = join(ROOT, 'gaps');
 const GAP_EVENTS = new Set(['minted', 'closed', 'dissolved', 'redirected']);
 const MOTION_EVENTS = new Set([
-  'recorded', 'published', 'tabled', 'seconded', 'not_seconded', 'deferred',
-  'withdrawn', 'carried', 'lost', 'enacted', 'reviewed', 'renewed',
-  'reversed', 'superseded', 'sunset', 'terminated',
+  'recorded', 'published', 'tabled', 'seconded', 'second_annulled',
+  'not_seconded', 'deferred', 'withdrawn', 'carried', 'lost', 'enacted',
+  'reviewed', 'renewed', 'reversed', 'superseded', 'sunset', 'terminated',
 ]);
 
 const errors = [];

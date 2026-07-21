@@ -124,9 +124,9 @@ threshold snapshots will be **added** to new versions — never backfilled.
 
 ```yaml
 seq: 1
-type: recorded | published | tabled | seconded | not_seconded | deferred |
-      withdrawn | carried | lost | enacted | reviewed | renewed | reversed |
-      superseded | sunset | terminated
+type: recorded | published | tabled | seconded | second_annulled |
+      not_seconded | deferred | withdrawn | carried | lost | enacted |
+      reviewed | renewed | reversed | superseded | sunset | terminated
 date: 2026-06-21
 authority: ...
 ```
@@ -139,6 +139,13 @@ authority: ...
   `seconder: "Name"` field. This is currently the only place the Record
   holds a name; general identity-on-the-record remains the community's
   open ruling.
+- `second_annulled` — append-only undo of an invalid second (chair's ruling,
+  21 July 2026: **the mover cannot second their own motion**). Nothing is
+  deleted: the annulment carries `annuls: <seq>` naming the voided event,
+  which stays on the record, and the motion **returns to published** — open
+  to be seconded by someone else. Chair-authored; the instrument cannot
+  enforce mover ≠ seconder itself, because motions are unattributed until
+  the community rules on identity.
 - The terminal set and the review/deferral transitions follow build spec §5.
   Transitions whose operating rules the community has not yet made
   (deferral franchise, the review forcing arm, the vote itself) **do not
