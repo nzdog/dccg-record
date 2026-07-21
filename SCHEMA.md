@@ -73,6 +73,10 @@ provenance: minutes | instrument
 review_date: 2026-12-01          # instrument motions: set by the creator.
                                  # minutes motions: absent if not minuted.
 owner_if_carried: ""             # optional
+species: operational | constitutional   # optional — the motion's kind, declared
+                                 # by the creator (spec §3). Operating motions
+                                 # act in the world; constitutional motions
+                                 # write to how the community runs.
 scoping_statement: >-            # optional — the creator's plain-language
   Who this decision lands on,    # line saying who the decision lands on
   and why.                       # and why (renders the weighing measures)
