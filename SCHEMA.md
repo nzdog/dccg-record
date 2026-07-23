@@ -136,8 +136,9 @@ authority: ...
 - `seconded` — given via the instrument (chair's rulings, 21 July 2026): one
   second suffices, its meaning is that the motion **will be discussed at the
   next meeting**, and — as vouching — it carries an additional
-  `seconder: "Name"` field. The seconder must be on the community list and
-  the second is confirmed from their email on file before it is written.
+  `seconder: "Name"` field (self-given, like suggestion names). The
+  seconder's email must be on the community list and the second is
+  confirmed from that inbox before it is written.
   Names on the Record appear here and on suggestions; general
   identity-on-the-record (motion creators) remains the community's open
   ruling.
@@ -158,7 +159,7 @@ authority: ...
 ```yaml
 seq: 1
 date: 2026-07-21
-name: "Member Name"       # from the community list — its spelling is canonical
+name: "Member Name"       # as the member typed it, verified by a listed email
 confirm: "a1b2c3d4e5f6a7b8" # confirmation-token fingerprint (idempotency)
 authority: >-
   suggested by Member Name, confirmed from their email on file —
@@ -166,10 +167,12 @@ authority: >-
 ```
 
 The body is the suggestion text, verbatim. By the chair's rulings of
-21 July 2026, suggestions are **attributed and verified**: only a name on
-the **community list** (kept privately by the chair, with an email on file)
-may suggest, and nothing posts until a confirmation link sent to that email
-is clicked. The recorded name is the list's spelling. The Record holds
+21–22 July 2026, suggestions are **attributed and verified**: the maker's
+email must be on the **community list** (kept privately by the chair), and
+nothing posts until a confirmation link sent to that email is clicked. The
+recorded name is the one the member types — the chair holds emails, not
+reliable names — so the name is self-given, anchored to a verified listed
+inbox. The Record holds
 **names only — never email addresses or contact details** (the validator
 enforces this). Early suggestions predating the ruling have no `name` field;
 absences are shown, not backfilled.
